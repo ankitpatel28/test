@@ -1,0 +1,15 @@
+
+.gallery td{ 
+  display: none;
+}
+.more, .less {
+  background-color: #000;
+  width: 100px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+  margin-top: 6px;
+  padding: 6px 0;
+  text-align: center;
+    text-transform: uppercase;
+}

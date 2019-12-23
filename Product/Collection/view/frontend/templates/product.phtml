@@ -1,0 +1,82 @@
+<?php //die('ok'); ?>
+<style type="text/css">
+	tr{text-align: center;}
+	td{text-align: center;}
+
+</style>
+<div class="items-wrapper">
+<?php 
+$productCollection = $block->getProductCollection();
+echo "<table border='1'>";
+echo "<tr>";
+echo "<th>Id</th>";
+echo "<th>Image</th>";
+echo "<th>Sku</th>";
+echo "<th>Name</th>";
+echo "<th>Quantity</th>";
+echo "<th>Stock</th>";
+echo "<th>Price</th>";
+echo "</tr>";
+/*foreach ($productCollection as $product) {
+	$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+	$store = $objectManager->get('Magento\Store\Model\StoreManagerInterface')->getStore();
+	$image = $store->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA) . 'catalog/product' . $product->getImage();
+}*/
+foreach ($productCollection->getData() as $product): ?>
+
+<div class="item">
+<?php	$id = $product['entity_id'];
+	$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+	//$image= '';
+	$sku = $product['sku'];
+	$product = $objectManager->create('Magento\Catalog\Model\Product')->load($id);
+	$name = $product->getName();
+	$productimages = $product->getMediaGalleryImages();
+	foreach ($productimages as $productimage) {
+		$image = $productimage['url'];
+	}
+	$StockState = $objectManager->get('\Magento\CatalogInventory\Api\StockStateInterface');
+	$qty = $StockState->getStockQty($id, $product->getStore()->getWebsiteId());
+	$productStockObj = $objectManager->get('Magento\CatalogInventory\Api\StockRegistryInterface')->getStockItem($id);
+	$stock = $productStockObj->getData('is_in_stock');
+	if($stock == 1)
+	{
+		$stock = "In Stock";
+	}
+	else
+	{
+		$stock = "Out of Stock";
+	}
+	$price = $product->getPrice(); ?>
+	
+<?php	echo "<tr class='gallery'>";
+	echo "<td>".$id."</td>"; ?>
+	<td><img src='<?php echo $image; ?> ' height="100px" width="100px"/></td> 
+	<?php echo "<td>".$sku."</td>";
+	echo "<td>".$name."</td>";
+	echo "<td>".$qty."</td>";
+	echo "<td>".$stock."</td>";
+	echo "<td>".$price."</td>";
+	echo "</tr>";    
+ ?>
+</div><br />
+<?php endforeach; ?>
+</table>
+<div class="more">Show more</div>
+<div class="less">Show less</div>
+</div>
+
+
+<!--Start of Tawk.to Script-->
+<!-- <script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/5de9e66e43be710e1d20d1f4/default';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script> -->
+<!--End of Tawk.to Script-->

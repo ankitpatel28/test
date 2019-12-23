@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+	<head>
+		<css src="Product_Collection::css/style.css"/>
+		<script src="Product_Collection::js/test.js"/>
+		<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.0.min.js"></script>
+
+		
+	</head>
+	<body>
+    <referenceContainer name="content">
+        <block class="Product\Collection\Block\Collection" name="collection" template="Product_Collection::product.phtml" />
+    </referenceContainer>
+</body>
+</page>
