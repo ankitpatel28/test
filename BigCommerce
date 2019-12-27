@@ -1,0 +1,7 @@
+sudo apt-get update
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.0/install.sh | bash
+source ~/.bashrc
+nvm install 10.16
+nvm -v
+npm install -g @bigcommerce/stencil-cli
+stencil init
