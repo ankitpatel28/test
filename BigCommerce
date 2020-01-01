@@ -5,3 +5,14 @@ nvm install 10.16
 nvm -v
 npm install -g @bigcommerce/stencil-cli
 stencil init
+
+Composer Repository
+https://www.w3resource.com/php/composer/create-publish-and-use-your-first-composer-package.php
+
+command for git 
+-git branch
+-git status
+-git add
+-git status
+-git commit -m "Add Text File For Testing"
+-git push origin master
