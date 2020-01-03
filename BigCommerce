@@ -10,6 +10,9 @@ Composer Repository
 https://www.w3resource.com/php/composer/create-publish-and-use-your-first-composer-package.php
 https://blog.jgrossi.com/2013/creating-your-first-composer-packagist-package/
 
+Slider Extension
+  -composer require mageplaza/magento-2-banner-slider-extension
+
 command for git 
 -git branch
 -git status
